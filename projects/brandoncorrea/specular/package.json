@@ -1,9 +1,9 @@
 {
   "name": "@brandoncorrea/specular",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A wrapper around Angular's TestBed for shorter and declarative assertions.",
   "license": "MIT",
-  "repository": "brandoncorrea/specular",
+  "repository": "brandoncorrea/npm-angular/tree/master/projects/brandoncorrea/specular",
   "keywords": [
     "specular",
     "npm",
