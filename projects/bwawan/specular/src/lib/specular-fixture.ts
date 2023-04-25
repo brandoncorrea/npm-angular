@@ -23,6 +23,26 @@ export class SpecularFixture<T> {
     this.detectChanges()
   }
 
+  private simulateKeyEvent(type: string, selector: string, code: string) {
+    const event = new KeyboardEvent(type, {
+      bubbles: true,
+      cancelable: true,
+      shiftKey: false,
+      code
+    })
+    this.select(selector).dispatchEvent(event)
+    this.detectChanges()
+  }
+
+  keyup = (selector: string, code: string) =>
+    this.simulateKeyEvent('keyup', selector, code);
+
+  keydown = (selector: string, code: string) =>
+    this.simulateKeyEvent('keydown', selector, code);
+
+  keypress = (selector: string, code: string) =>
+    this.simulateKeyEvent('keypress', selector, code);
+
   change(selector: string, value: any) {
     let el = this.select(selector)
     el.value = value

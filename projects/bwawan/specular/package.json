@@ -1,6 +1,6 @@
 {
   "name": "@bwawan/specular",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A wrapper around Angular's TestBed for shorter and declarative assertions.",
   "license": "MIT",
   "repository": "brandoncorrea/npm-angular/tree/master/projects/bwawan/specular",
