@@ -9,6 +9,10 @@ export class SpecularFixture<T> {
     this.componentFixture.detectChanges()
   select = (selector: string) =>
     this.componentFixture.nativeElement.querySelector(selector)
+  selectAll = (selector: string) =>
+    this.componentFixture.nativeElement.querySelectorAll(selector)
+  count = (selector: string) =>
+    this.selectAll(selector).length
   shouldSelect = (selector: string) =>
     expect(this.select(selector)).not.toBeNull()
   shouldNotSelect = (selector: string) =>
@@ -17,6 +21,14 @@ export class SpecularFixture<T> {
   click(selector: string) {
     this.select(selector).click()
     this.detectChanges()
+  }
+
+  href(selector: string) {
+    let hostPrefix = 'http://' + window.location.host
+    let href = this.select(selector).href
+    return href.startsWith(hostPrefix)
+      ? href.substring(hostPrefix.length)
+      : href
   }
 
   text = (selector: string) =>
