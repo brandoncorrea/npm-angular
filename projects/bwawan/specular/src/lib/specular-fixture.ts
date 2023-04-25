@@ -23,6 +23,13 @@ export class SpecularFixture<T> {
     this.detectChanges()
   }
 
+  change(selector: string, value: any) {
+    let el = this.select(selector)
+    el.value = value
+    el.dispatchEvent(new Event('input'))
+    this.detectChanges()
+  }
+
   href(selector: string) {
     let hostPrefix = 'http://' + window.location.host
     let href = this.select(selector).href

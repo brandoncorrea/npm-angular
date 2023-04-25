@@ -3,8 +3,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@brandoncorrea/specular": [
-        "dist/brandoncorrea/specular"
+      "@bwawan/core": [
+        "dist/bwawan/core"
+      ],
+      "@bwawan/specular": [
+        "dist/bwawan/specular"
       ]
     },
     "baseUrl": "./",

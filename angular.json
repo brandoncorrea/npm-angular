@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@brandoncorrea/specular": {
+    "@bwawan/specular": {
       "projectType": "library",
-      "root": "projects/brandoncorrea/specular",
-      "sourceRoot": "projects/brandoncorrea/specular/src",
+      "root": "projects/bwawan/specular",
+      "sourceRoot": "projects/bwawan/specular/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/brandoncorrea/specular/ng-package.json"
+            "project": "projects/bwawan/specular/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/brandoncorrea/specular/tsconfig.lib.prod.json"
+              "tsConfig": "projects/bwawan/specular/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/brandoncorrea/specular/tsconfig.lib.json"
+              "tsConfig": "projects/bwawan/specular/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,40 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/brandoncorrea/specular/tsconfig.spec.json",
+            "tsConfig": "projects/bwawan/specular/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "@bwawan/core": {
+      "projectType": "library",
+      "root": "projects/bwawan/core",
+      "sourceRoot": "projects/bwawan/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/bwawan/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bwawan/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bwawan/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/bwawan/core/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
