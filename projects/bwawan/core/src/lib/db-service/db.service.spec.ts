@@ -43,6 +43,23 @@ describe('Db Service', () => {
     expect(db.all()).toEqual([])
   })
 
+  it('deletes multiple items', () => {
+    db.save({ id: 3, foo: 'bar' })
+    db.save({ id: 5, foo: 'baz' })
+    db.delete({ id: 3 }, 5)
+    expect(db.all()).toEqual([])
+  })
+  
+  it('deletes all items', () => {
+    db.save(
+      { id: 1, foo: 'bar'},
+      { id: 2, foo: 'baz'},
+      { id: 3, foo: 'buzz'}
+    )
+    db.clear()
+    expect(db.all()).toEqual([])
+  })
+
   it('finds entities by predicate', () => {
     let e1 = { id: 1, foo: 'bar'}
     let e2 = { id: 3, foo: 'baz'}
