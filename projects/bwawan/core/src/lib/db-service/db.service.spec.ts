@@ -107,8 +107,17 @@ describe('Db Service', () => {
     let e2 = { id: 3, foo: 'baz' }
     db.save(e1, e2)
     expect(db.get(1)).toEqual(e1)
-    expect(db.get(2)).toBeNull()
     expect(db.get(3)).toEqual(e2)
+    expect(db.get(2)).toBeNull()
+    expect(db.get(null)).toBeNull()
+  })
+
+  it('finds entities by object id', () => {
+    let e1 = { id: 1, foo: 'bar' }
+    let e2 = { id: 3, foo: 'baz' }
+    db.save(e1, e2)
+    expect(db.get(e1)).toEqual(e1)
+    expect(db.get(e2)).toEqual(e2)
   })
 
   it('counts all entities', () => {
@@ -138,5 +147,20 @@ describe('Db Service', () => {
     expect(db.countBy({ id: 3 })).toEqual(1)
     expect(db.countBy({ foo: 'bar' })).toEqual(2)
     expect(db.countBy({ id: 6, foo: 'bar' })).toEqual(1)
+  })
+
+  it('adds properties to object reference', () => {
+    let e: {
+      id: any,
+      foo: any,
+      color?: any
+    } = {
+      id: 1,
+      foo: 'bar'
+    }
+    db.save(e)
+    e.foo = 'baz'
+    e.color = 'red'
+    expect(db.get(1)).toEqual({ id: 1, foo: 'baz', color: 'red'})
   })
 })

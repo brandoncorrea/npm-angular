@@ -7,6 +7,8 @@ function isSuperset(parent: any, child: any) {
   return true
 }
 
+const id = (entityOrId: any) => entityOrId?.id || entityOrId
+
 @Injectable({ providedIn: 'root' })
 export class DbService {
   private entities: Map<number, Object> = new Map()
@@ -35,11 +37,9 @@ export class DbService {
   }
   
   all = (): any[] => Array.from(this.entities.values())
-  get = (id: any): any => this.entities.get(id) || null
+  get = (entityOrId: any): any => this.entities.get(id(entityOrId)) || null
   delete = (...entities: any[]) =>
-    entities.forEach(entityOrId => {
-      this.entities.delete(entityOrId.id || entityOrId)
-    })
+    entities.forEach(entityOrId => this.entities.delete(id(entityOrId)))
   clear = () => this.entities.clear()
   findWhere = (pred: any): any[] => this.all().filter(pred)
   findBy = (entity: any): any[] => this.findWhere((e: any) => isSuperset(e, entity))
